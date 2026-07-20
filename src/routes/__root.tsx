@@ -8,6 +8,7 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
+import { Analytics } from "@vercel/analytics/react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -78,10 +79,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Bhati Packers & Movers — Safe, Fast & Trusted Movers Across India" },
-      { name: "description", content: "Bhati Packers & Movers offers household shifting, office relocation, vehicle transport, packing, loading, unloading, warehousing and insurance across India. Get a free quote today." },
+      {
+        name: "description",
+        content:
+          "Bhati Packers & Movers offers household shifting, office relocation, vehicle transport, packing, loading, unloading, warehousing and insurance across India. Get a free quote today.",
+      },
       { name: "author", content: "Bhati Packers & Movers" },
       { property: "og:title", content: "Bhati Packers & Movers — Trusted Movers Across India" },
-      { property: "og:description", content: "Household shifting, office relocation, vehicle transport, packing and insurance. Free quote, GPS tracked, damage-free delivery." },
+      {
+        property: "og:description",
+        content:
+          "Household shifting, office relocation, vehicle transport, packing and insurance. Free quote, GPS tracked, damage-free delivery.",
+      },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Bhati Packers & Movers" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -91,7 +100,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap",
+      },
     ],
     scripts: [
       {
@@ -100,7 +112,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@context": "https://schema.org",
           "@type": "MovingCompany",
           name: "Bhati Packers & Movers",
-          description: "Professional packers and movers offering household shifting, office relocation, vehicle transport and warehousing across India.",
+          description:
+            "Professional packers and movers offering household shifting, office relocation, vehicle transport and warehousing across India.",
           telephone: "+91-98765-43210",
           email: "hello@bhatipackers.in",
           areaServed: "IN",
@@ -124,6 +137,7 @@ function RootShell({ children }: { children: ReactNode }) {
       </head>
       <body>
         {children}
+        <Analytics />
         <Scripts />
       </body>
     </html>
