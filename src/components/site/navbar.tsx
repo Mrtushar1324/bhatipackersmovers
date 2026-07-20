@@ -68,6 +68,12 @@ export function Navbar() {
           >
             <Phone className="h-4 w-4 text-primary" /> +91 70235 68588
           </a>
+          <a
+            href="tel:+916376498773"
+            className="hidden items-center gap-2 rounded-lg border border-border px-3 py-2 text-sm font-semibold text-foreground transition hover:bg-secondary sm:flex"
+          >
+            <Phone className="h-4 w-4 text-primary" /> +91 63764 98773
+          </a>
           <Button
             asChild
             className="hidden gradient-accent text-accent-foreground shadow-accent hover:opacity-95 sm:inline-flex"

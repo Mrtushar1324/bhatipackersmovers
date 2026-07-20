@@ -2,6 +2,7 @@ import { SectionHeader } from "./services";
 import { Mail, MapPin, Phone, MessageCircle, Clock, ShieldAlert } from "lucide-react";
 import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
 import { Link } from "@tanstack/react-router";
+import { InflateRaw } from "zlib";
 
 export function Contact() {
   return (
@@ -16,7 +17,7 @@ export function Contact() {
             <InfoCard icon={MapPin} title="Head Office" lines={["Shop No. 2, Prithvi Tower, Plot No. 117,", "Sumer Nagar, Mansarovar, Jaipur - 302020"]} />
             <div className="grid gap-3 sm:grid-cols-2">
               <InfoCard icon={Clock} title="Working Hours" lines={["Mon – Sun: 7:00 – 22:00"]} compact />
-              <InfoCard icon={ShieldAlert} title="Emergency" lines={["+91 73398 07006"]} href="tel:+917339807006" compact />
+              <InfoCard icon={ShieldAlert} title="Emergency" lines={["+91 63764 98773"]} href="tel:+916376498773" compact />
             </div>
             <div className="flex items-center gap-3 pt-2">
               {[Facebook, Instagram, Linkedin, Youtube].map((Icon, i) => (

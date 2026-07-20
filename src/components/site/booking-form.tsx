@@ -41,6 +41,12 @@ export function BookingForm() {
 
   const submit = () => {
     const r = schema.safeParse(data);
+    const phoneRegex=/^[6-9]\d{9}$/;
+    if (!phoneRegex.test(data.phone)){
+      alert("please enter a valid 10 digit mobile no:-");
+    return;
+    }
+
     if (!r.success) {
       toast.error(r.error.issues[0]?.message ?? "Please check the form");
       return;
@@ -106,7 +112,7 @@ export function BookingForm() {
                 {step === 0 && (
                   <div className="grid gap-4 sm:grid-cols-2">
                     <Field label="Full Name"><Input value={data.name} onChange={(e) => set("name", e.target.value)} placeholder="Your name" /></Field>
-                    <Field label="Phone"><Input value={data.phone} onChange={(e) => set("phone", e.target.value)} placeholder="+91 " /></Field>
+                    <Field label="Phone"><Input value={data.phone} onChange={(e) => set("phone", e.target.value)} placeholder="+91 9876543210" pattern="[6-9]{1}[0-9]{9}" maxLength={10} required/></Field>
                     <Field label="Email"><Input type="email" value={data.email} onChange={(e) => set("email", e.target.value)} placeholder="you@email.com" /></Field>
                     <Field label="Preferred Contact">
                       <Select value={data.contact} onValueChange={(v) => set("contact", v)}>
@@ -161,6 +167,7 @@ export function BookingForm() {
                   </div>
                 )}
               </div>
+              
 
               <div className="mt-8 flex items-center justify-between">
                 <Button variant="ghost" onClick={() => setStep((s) => Math.max(0, s - 1))} disabled={step === 0}>

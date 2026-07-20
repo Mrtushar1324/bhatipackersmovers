@@ -35,25 +35,23 @@ const prompts: Record<keyof Estimate, { q: string; quick?: string[] }> = {
 
 const faq: { match: RegExp; a: string }[] = [
   { match: /price|cost|quote|charge/i, a: "Local moves start around ₹6,000 for a 1 BHK. Intercity depends on distance, house size and packing. I can estimate it for you — just answer a few quick questions." },
-  { match: /insur/i, a: "Yes, we offer transit insurance at ~3% of goods value, and full-value coverage on request." },
   { match: /track|gps/i, a: "Every truck is GPS-tracked and you'll get live WhatsApp updates from a dedicated coordinator." },
   { match: /pack(ing)? material/i, a: "We use bubble wrap, corrugated sheets, stretch film, double-wall cartons and wooden crates for fragile items." },
   { match: /days? before|advance|book/i, a: "For local moves, 2–3 days is enough. For intercity, book 5–7 days in advance." },
-  { match: /storage|warehouse/i, a: "Yes — short and long-term warehousing with 24/7 CCTV monitoring." },
   { match: /vehicle|car|bike/i, a: "We transport cars and two-wheelers on dedicated carriers, fully insured." },
 ];
 
-function priceOf(e: Estimate) {
-  const bhk = /1/.test(e.bhk ?? "") ? 6000 : /2/.test(e.bhk ?? "") ? 10000 : /3/.test(e.bhk ?? "") ? 15000 : 22000;
-  const vm = /mini|tempo/i.test(e.vehicle ?? "") ? 0.9 : /17/.test(e.vehicle ?? "") ? 1.35 : /20/.test(e.vehicle ?? "") ? 1.6 : 1.1;
-  let p = bhk * vm;
-  if (/villa|4/.test(e.bhk ?? "")) p *= 1.15;
-  if (/no/i.test(e.lift ?? "")) p += (/3|4/.test(e.floor ?? "") ? 1600 : 800);
-  if (/full|yes/i.test(e.packing ?? "")) p += 2500;
-  if (/yes/i.test(e.storage ?? "")) p += 3000;
-  if (/yes/i.test(e.insurance ?? "")) p += Math.round(p * 0.03);
-  return Math.round(p / 100) * 100;
-}
+// function priceOf(e: Estimate) {
+//   const bhk = /1/.test(e.bhk ?? "") ? 6000 : /2/.test(e.bhk ?? "") ? 10000 : /3/.test(e.bhk ?? "") ? 15000 : 22000;
+//   const vm = /mini|tempo/i.test(e.vehicle ?? "") ? 0.9 : /17/.test(e.vehicle ?? "") ? 1.35 : /20/.test(e.vehicle ?? "") ? 1.6 : 1.1;
+//   let p = bhk * vm;
+//   if (/villa|4/.test(e.bhk ?? "")) p *= 1.15;
+//   if (/no/i.test(e.lift ?? "")) p += (/3|4/.test(e.floor ?? "") ? 1600 : 800);
+//   if (/full|yes/i.test(e.packing ?? "")) p += 2500;
+//   if (/yes/i.test(e.storage ?? "")) p += 3000;
+//   if (/yes/i.test(e.insurance ?? "")) p += Math.round(p * 0.03);
+//   return Math.round(p / 100) * 100;
+//}
 
 const uid = () => Math.random().toString(36).slice(2, 9);
 
@@ -70,7 +68,7 @@ export function Chatbot() {
     if (open && messages.length === 0) {
       pushBot(
         "Hi! I'm Bhati's Assistant 👋 I can answer questions or build an instant moving quote for you.",
-        ["Get instant quote", "Services offered", "Pricing", "Talk on WhatsApp"],
+        ["Get instant quote", "Services offered", "Talk on WhatsApp"],
       );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -101,10 +99,10 @@ export function Chatbot() {
     setEstimate((e) => ({ ...e, [key]: answer }));
     if (nextStep >= stepOrder.length) {
       const finalEst: Estimate = { ...estimate, [key]: answer };
-      const p = priceOf(finalEst);
+      //const p = priceOf(finalEst);
       setStep(-1);
       pushBot(
-        `Thanks ${finalEst.name ?? "there"}! Based on your inputs, your estimated cost is ₹${p.toLocaleString("en-IN")} (inclusive of packing, transport & basic insurance).\n\nOur expert will call you at ${finalEst.phone ?? "your number"} shortly with the exact quote.`,
+        `Thanks ${finalEst.name ?? "there"}! \n\nOur expert will call you at ${finalEst.phone ?? "your number"} shortly with the exact quote.`,
         ["Continue on WhatsApp", "Start new estimate", "Talk to human"],
       );
       return;
@@ -144,8 +142,8 @@ export function Chatbot() {
       const hit = faq.find((f) => f.match.test(text));
       if (hit) { pushBot(hit.a, ["Get instant quote", "Talk on WhatsApp"]); return; }
       pushBot(
-        "I can help with pricing, services, packing, insurance or tracking. Want me to build an instant quote?",
-        ["Get instant quote", "Services", "Pricing"],
+        "I couldn't find the information you're looking for. Please contact our team on WhatsApp or call us for immediate assistance.",
+        ["Get instant quote", "Services"],
       );
       return;
     }
