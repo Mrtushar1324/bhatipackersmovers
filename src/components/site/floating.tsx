@@ -37,13 +37,13 @@ export function FloatingButtons({ onOpenChat }: { onOpenChat: () => void }) {
           <ArrowUp className="h-5 w-5" />
         </button>
       )}
-      <button
+      {/* <button
         onClick={onOpenChat}
         aria-label="Open chat"
         className="lg:hidden grid h-14 w-14 place-items-center rounded-full gradient-primary text-primary-foreground shadow-elegant transition hover:scale-110"
       >
         <MessageCircle className="h-6 w-6" />
-      </button>
+      </button> */}
     </div>
   );
 }
