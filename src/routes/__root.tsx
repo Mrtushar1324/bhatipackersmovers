@@ -108,6 +108,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           openingHours: "Mo-Su 07:00-22:00",
         }),
       },
+      {
+        children: `
+          window.omnisend = window.omnisend || [];
+          omnisend.push(["brandID", "6a60a6f7c18e835d7a24fbb9"]);
+          omnisend.push(["track", "$pageViewed"]);
+          !function(){var e=document.createElement("script");
+          e.type="text/javascript",e.async=!0,
+          e.src="https://omnisnippet1.com/inshop/launcher-v2.js";
+          var t=document.getElementsByTagName("script")[0];
+          t.parentNode.insertBefore(e,t)}();
+        `,
+      },
     ],
   }),
   shellComponent: RootShell,
