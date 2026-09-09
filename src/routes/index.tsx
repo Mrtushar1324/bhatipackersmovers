@@ -4,9 +4,8 @@ import { Navbar } from "@/components/site/navbar";
 import { Hero } from "@/components/site/hero";
 import { Services, WhyChooseUs } from "@/components/site/services";
 import { Process } from "@/components/site/process";
-
 import { BookingForm } from "@/components/site/booking-form";
-import { FAQ, Gallery } from "@/components/site/misc-sections";
+import { FAQ } from "@/components/site/misc-sections";
 import { Contact, Footer } from "@/components/site/contact";
 import { FloatingButtons } from "@/components/site/floating";
 import { Chatbot } from "@/components/site/chatbot";
@@ -36,8 +35,6 @@ function Index() {
         <Services />
         <WhyChooseUs />
         <Process />
-        
-        <Gallery />
         <BookingForm />
         <FAQ />
         <Contact />

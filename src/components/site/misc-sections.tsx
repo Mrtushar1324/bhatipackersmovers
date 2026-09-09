@@ -90,43 +90,43 @@ function StatCounter({ value, suffix, label }: { value: number; suffix: string; 
   );
 }
 
-const gallery = [
-  { icon: Package, title: "Packing", color: "gradient-primary" },
-  { icon: Truck, title: "Loading", color: "gradient-accent" },
-  { icon: Warehouse, title: "Warehouse", color: "gradient-primary" },
-  { icon: Building2, title: "Office Move", color: "gradient-accent" },
-  { icon: Sofa, title: "Furniture", color: "gradient-primary" },
-  { icon: Car, title: "Vehicle Transport", color: "gradient-accent" },
-];
+// const gallery = [
+//   { icon: Package, title: "Packing", color: "gradient-primary" },
+//   { icon: Truck, title: "Loading", color: "gradient-accent" },
+//   { icon: Warehouse, title: "Warehouse", color: "gradient-primary" },
+//   { icon: Building2, title: "Office Move", color: "gradient-accent" },
+//   { icon: Sofa, title: "Furniture", color: "gradient-primary" },
+//   { icon: Car, title: "Vehicle Transport", color: "gradient-accent" },
+// ];
 
-export function Gallery() {
-  return (
-    <section id="gallery" className="py-20 sm:py-28">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <SectionHeader
-          eyebrow="Our Work"
-          title="A glimpse of how we handle every move"
-          subtitle="From compact studio moves to full corporate relocations."
-        />
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {gallery.map((g) => (
-            <div
-              key={g.title}
-              className="group relative aspect-[4/3] overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition hover:-translate-y-1 hover:shadow-elegant"
-            >
-              <div className={`absolute inset-0 ${g.color} opacity-90`} />
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,white_0%,transparent_50%)] opacity-30" />
-              <div className="relative flex h-full flex-col items-center justify-center gap-3 text-primary-foreground">
-                <g.icon className="h-14 w-14 transition group-hover:scale-110" />
-                <span className="font-display text-2xl font-bold">{g.title}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
+// export function Gallery() {
+//   return (
+//     <section id="gallery" className="py-20 sm:py-28">
+//       <div className="mx-auto max-w-7xl px-4 sm:px-6">
+//         <SectionHeader
+//           eyebrow="Our Work"
+//           title="A glimpse of how we handle every move"
+//           subtitle="From compact studio moves to full corporate relocations."
+//         />
+//         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+//           {gallery.map((g) => (
+//             <div
+//               key={g.title}
+//               className="group relative aspect-[4/3] overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition hover:-translate-y-1 hover:shadow-elegant"
+//             >
+//               <div className={`absolute inset-0 ${g.color} opacity-90`} />
+//               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,white_0%,transparent_50%)] opacity-30" />
+//               <div className="relative flex h-full flex-col items-center justify-center gap-3 text-primary-foreground">
+//                 <g.icon className="h-14 w-14 transition group-hover:scale-110" />
+//                 <span className="font-display text-2xl font-bold">{g.title}</span>
+//               </div>
+//             </div>
+//           ))}
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
 
 const posts = [
   { title: "10 Moving Tips That Save Time & Money", cat: "Moving Tips", read: "6 min" },

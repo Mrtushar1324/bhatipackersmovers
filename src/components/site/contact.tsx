@@ -11,10 +11,10 @@ export function Contact() {
         <SectionHeader eyebrow="Contact" title="Talk to a relocation expert" subtitle="Available across India, 7 days a week." />
         <div className="mt-12 grid gap-6 lg:grid-cols-[1fr_1.2fr]">
           <div className="grid gap-4">
-            <InfoCard icon={Phone} title="Phone" lines={["+91 70235 68588"]} href="tel:+917023568588" />
-            <InfoCard icon={MessageCircle} title="WhatsApp" lines={["Chat with our team instantly on +91 70235 68588"]} href="https://wa.me/917023568588?text=Hi%20Bhati%20Packers%20%26%20Movers%2C%20I%20need%20a%20quote." accent />
+            <InfoCard icon={Phone} title="Phone" lines={["+91 7014105376"]} href="tel:+917014105376" />
+            <InfoCard icon={MessageCircle} title="WhatsApp" lines={["Chat with our team instantly on +91 7014105376"]} href="https://wa.me/917023568588?text=Hi%20Bhati%20Packers%20%26%20Movers%2C%20I%20need%20a%20quote." accent />
             <InfoCard icon={Mail} title="Email" lines={["bhatipackersmovers@gmail.com"]} href="mailto:bhatipackersmovers@gmail.com" />
-            <InfoCard icon={MapPin} title="Head Office" lines={["Shop No. 2, Prithvi Tower, Plot No. 117,", "Sumer Nagar, Mansarovar, Jaipur - 302020"]} />
+            <InfoCard icon={MapPin} title="Head Office" lines={["24/145 Opp TAGORE VIDYA BHAWAN SR.SEC.SCHOOL, Swarn Path, Mansarovar , Jaipur -302020"]} />
             <div className="grid gap-3 sm:grid-cols-2">
               <InfoCard icon={Clock} title="Working Hours" lines={["Mon – Sun: 7:00 – 22:00"]} compact />
               <InfoCard icon={ShieldAlert} title="Emergency" lines={["+91 63764 98773"]} href="tel:+916376498773" compact />
@@ -30,7 +30,7 @@ export function Contact() {
           <div className="overflow-hidden rounded-3xl border border-border shadow-elegant">
             <iframe
               title="Bhati Packers & Movers — Head Office, Mansarovar, Jaipur"
-              src="https://www.google.com/maps?q=Prithvi+Tower+Plot+117+Sumer+Nagar+Mansarovar+Jaipur+302020&output=embed"
+              src="https://www.google.com/maps?q=26.8701536,75.7517396&output=embed"
               className="h-full min-h-[420px] w-full"
               loading="lazy"
             />
@@ -85,7 +85,7 @@ export function Footer() {
           </div>
           <FooterCol title="Quick Links" links={[
             { label: "Home", href: "#home" }, { label: "Services", href: "#services" },
-            { label: "Pricing", href: "#pricing" }, { label: "Gallery", href: "#gallery" },
+            { label: "Pricing", href: "#pricing" },{ label: "Gallery", href: "#" },
             { label: "FAQ", href: "#faq" }, { label: "Contact", href: "#contact" },
           ]} />
           <FooterCol title="Services" links={[
@@ -120,7 +120,14 @@ function FooterCol({ title, links }: { title: string; links: { label: string; hr
       <p className="font-display font-bold">{title}</p>
       <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
         {links.map((l) => (
-          <li key={l.label}><a href={l.href} className="hover:text-primary">{l.label}</a></li>
+                            <li key={l.label}>
+                            {l.href.startsWith("#") ? (
+                            <a href={l.href} className="hover:text-primary">{l.label}</a>
+                            ) : (
+                            <Link to={l.href} className="hover:text-primary">{l.label}</Link>
+                            )}
+                            </li>
+          
         ))}
       </ul>
     </div>

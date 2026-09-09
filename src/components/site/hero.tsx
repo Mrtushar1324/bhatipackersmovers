@@ -1,4 +1,4 @@
-import { ArrowRight, Phone, ShieldCheck, Truck, Sparkles } from "lucide-react";
+import { ArrowRight, Phone, ShieldCheck, Truck, Sparkles, MapPin, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroImg from "@/assets/hero-movers.jpg";
 
@@ -19,10 +19,16 @@ export function Hero() {
 
       <div className="mx-auto max-w-7xl px-4 pb-20 pt-16 sm:px-6 lg:pt-24">
         <div className="animate-fade-up max-w-3xl text-primary-foreground">
-          <span className="inline-flex items-center gap-2 rounded-full glass px-3 py-1 text-xs font-semibold text-foreground">
-            <Sparkles className="h-3.5 w-3.5 text-accent" />
-            New in your city — launch offers live
-          </span>
+          {/* Launch offer badge */}
+          <div className="inline-flex items-center gap-2 rounded-full bg-secondary px-4 py-1.5 text-sm font-medium text-foreground">
+            <span>🚀</span> New in your city — launch offers live
+          </div>
+
+          {/* Trust strip - GST + other badges, same style, in a row */}
+          <div className="mt-4 flex flex-wrap items-center gap-3">
+          <TrustBadge icon={ShieldCheck} label="GST Registered" value="08ABHFB4245L1Z8" />
+          </div>
+
           <h1 className="mt-5 text-4xl font-bold leading-tight text-white drop-shadow sm:text-5xl lg:text-6xl">
             Safe, Fast & Trusted <span className="text-gradient bg-gradient-to-r from-white to-[color:var(--accent-glow)]">Packers and Movers</span> Across India
           </h1>
@@ -59,5 +65,27 @@ export function Hero() {
         </div>
       </div>
     </section>
+  );
+}
+
+function TrustBadge({
+  icon: Icon,
+  label,
+  value,
+}: {
+  icon: typeof ShieldCheck;
+  label: string;
+  value: string;
+}) {
+  return (
+    <div className="flex items-center gap-2 rounded-xl border border-white/20 bg-white/10 backdrop-blur-sm px-3 py-2">
+      <div className="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-white/20">
+        <Icon className="h-4 w-4 text-white" />
+      </div>
+      <div className="text-left leading-tight">
+        <p className="text-[10px] font-medium uppercase tracking-wide text-white/70">{label}</p>
+        <p className="text-xs font-bold text-white">{value}</p>
+      </div>
+    </div>
   );
 }
